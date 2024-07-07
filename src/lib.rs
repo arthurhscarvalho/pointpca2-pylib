@@ -1,8 +1,5 @@
-extern crate kiddo;
-extern crate libm;
 extern crate nalgebra as na;
-extern crate ordered_float;
-extern crate ply_rs;
+extern crate numpy;
 extern crate pointpca2_rust;
 
 use na::DMatrix;
@@ -31,7 +28,7 @@ where
 }
 
 #[pyfunction]
-fn pointpca2<'py>(
+fn compute_pointpca2<'py>(
     _py: Python<'py>,
     points_a: PyReadonlyArray2<'py, f64>,
     colors_a: PyReadonlyArray2<'py, u8>,
@@ -70,7 +67,7 @@ fn pointpca2<'py>(
 }
 
 #[pymodule]
-fn pointpca2_rs(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(pointpca2, m)?)?;
+fn pointpca2(_py: Python, m: &PyModule) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(compute_pointpca2, m)?)?;
     Ok(())
 }
