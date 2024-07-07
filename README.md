@@ -1,4 +1,4 @@
-# PointPCA2 - Rust to Python
+# PointPCA2 - Python Lib
 #### A seamless Python integration to the Rust implementation of PointPCA2
 
 This project aims to integrate Python to [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs), enabling the use of Python's comprehensive data science tools combined to the performance provided by the Rust implementation of PointPCA2.
@@ -16,10 +16,10 @@ Not yet available.
 - **Build**
 ```bash
 # Clone this repository
-https://github.com/akaTsunemori/pointpca2-rspy.git
+https://github.com/akaTsunemori/pointpca2-pylib.git
 
 # cd into the project folder
-cd pointpca2-rs-pypi
+cd pointpca2-pylib
 
 # Setup a virtual environment
 python -m venv venv
