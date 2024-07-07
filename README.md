@@ -1,4 +1,4 @@
-# PointPCA2 - PyPI
+# PointPCA2 - Rust to Python
 #### A seamless Python integration to the Rust implementation of PointPCA2
 
 This project aims to integrate Python to [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs), enabling the use of Python's comprehensive data science tools combined to the performance provided by the Rust implementation of PointPCA2.
