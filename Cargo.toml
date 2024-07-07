@@ -15,7 +15,7 @@ kiddo = "4.2.0"
 libm = "0.2.8"
 ply-rs = "0.1.3"
 numpy = "0.15"
-pointpca2-rust = { git = "https://github.com/akaTsunemori/pointpca2-rs.git", branch = "lib" }
+pointpca2-rust = { git = "https://github.com/akaTsunemori/pointpca2-rs.git", branch = "main" }
 
 [dependencies.pyo3]
 version = "0.15.1"
