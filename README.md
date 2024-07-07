@@ -16,7 +16,7 @@ Not yet available.
 - **Build**
 ```bash
 # Clone this repository
-https://github.com/akaTsunemori/pointpca2-rs-pypi.git
+https://github.com/akaTsunemori/pointpca2-rspy.git
 
 # cd into the project folder
 cd pointpca2-rs-pypi
