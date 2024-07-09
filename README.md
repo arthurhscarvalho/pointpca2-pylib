@@ -10,8 +10,7 @@ Not yet available.
 ### From source
 - **Prerequisites**
   - rustc == 1.77.2
-  - Python == 3.10
-  - pip == 23.3.1
+  - anaconda3 >= 23.7.4
 
 - **Build**
 ```bash
@@ -21,14 +20,8 @@ https://github.com/akaTsunemori/pointpca2-pylib.git
 # cd into the project folder
 cd pointpca2-pylib
 
-# Setup a virtual environment
-python -m venv venv
-
-# Activate the virtual environment
-source ./venv/bin/activate
-
-# Install the prerequisites
-pip install -r requirements.txt
+# Setup the conda environment
+conda env create -f environment.yml
 
 # Compile the project into a python module using maturin
 maturin develop -r
