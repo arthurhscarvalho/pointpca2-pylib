@@ -20,8 +20,9 @@ https://github.com/akaTsunemori/pointpca2-pylib.git
 # cd into the project folder
 cd pointpca2-pylib
 
-# Setup the conda environment
+# Setup and activate the conda environment
 conda env create -f environment.yml
+conda activate pointpca2-pylib
 
 # Compile the project into a python module using maturin
 maturin develop -r
@@ -49,7 +50,7 @@ print(*predictors)
 ```
 
 ### Contributing
-Feel free to open any kind of issues and contributions related to this Python package. Issues related to the Rust implementation should be open on the [Rust implementation](https://github.com/akaTsunemori/pointpca2-rs) repository.
+Feel free to open any kind of issues and contributions related to this Python package. Issues related to the Rust implementation should be open on the [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs) repository.
 
 ### Acknowledgments
 - [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs) - An implementation of PointPCA2 in Rust
