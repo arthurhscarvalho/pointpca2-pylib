@@ -5,7 +5,11 @@ This project aims to integrate Python to [pointpca2-rs](https://github.com/akaTs
 
 ## Setup
 ### From PyPI
-Not yet available.
+```bash
+pip install pointpca2
+# or
+python -m pip install pointpca2
+```
 
 ### From source
 - **Prerequisites**
