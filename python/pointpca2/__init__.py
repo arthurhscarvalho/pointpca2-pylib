@@ -11,7 +11,7 @@ def __preprocess_point_cloud(points, colors):
         raise Exception("Points and colors must have the same shape.")
     if points.dtype != np.double:
         points = points.astype(np.double)
-    if colors.max() <= 1 and colors.min() >= 0:
+    if colors.max() <= 1 and colors.min() >= 0 and colors.dtype == np.double:
         colors *= 255
     if colors.dtype != np.uint8:
         colors = colors.astype(np.uint8)

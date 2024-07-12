@@ -49,18 +49,18 @@ fn compute_pointpca2<'py>(
     let knn_indices_b = knn_search::knn_search(&points_b, &points_a, search_size);
     print_if_verbose("Computing local features", &verbose);
     let local_features = features::compute_features(
-        &points_a,
-        &colors_a,
-        &points_b,
-        &colors_b,
-        &knn_indices_a,
-        &knn_indices_b,
+        points_a,
+        colors_a,
+        points_b,
+        colors_b,
+        knn_indices_a,
+        knn_indices_b,
         search_size,
     );
     print_if_verbose("Computing predictors", &verbose);
-    let predictors_result = predictors::compute_predictors(&local_features);
+    let predictors_result = predictors::compute_predictors(local_features);
     print_if_verbose("Pooling predictors", &verbose);
-    let pooled_predictors = pooling::mean_pooling(&predictors_result);
+    let pooled_predictors = pooling::mean_pooling(predictors_result);
     print_if_verbose("Done", &verbose);
     let py_array = PyArray1::from_iter(_py, pooled_predictors.iter().cloned());
     py_array
