@@ -13,7 +13,7 @@ numpy = "0.15"
 
 [dependencies.pointpca2-rust]
 git = "https://github.com/akaTsunemori/pointpca2-rs.git"
-tag = "v1.2.0"
+tag = "v1.2.1"
 
 [dependencies.pyo3]
 version = "0.15.1"
