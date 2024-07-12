@@ -60,8 +60,7 @@ Feel free to open any kind of issues and contributions related to this Python pa
 - [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs) - An implementation of PointPCA2 in Rust
 
 ### License
-GNU GENERAL PUBLIC LICENSE<br>
-Version 2, June 1991
+MIT License
 
 ---
 
