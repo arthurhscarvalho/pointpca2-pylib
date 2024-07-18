@@ -32,7 +32,7 @@ conda activate pointpca2-pylib
 maturin develop -r
 ```
 
-### Usage
+## Usage
 ```python
 import open3d as o3d
 import numpy as np
@@ -53,13 +53,13 @@ predictors = pointpca2.compute_pointpca2(
 print(*predictors)
 ```
 
-### Contributing
+## Contributing
 Feel free to open any kind of issues and contributions related to this Python package. Issues related to the Rust implementation should be open on the [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs) repository.
 
-### Acknowledgments
+## Acknowledgments
 - [pointpca2-rs](https://github.com/akaTsunemori/pointpca2-rs) - An implementation of PointPCA2 in Rust
 
-### License
+## License
 MIT License
 
 ---
