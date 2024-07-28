@@ -1,6 +1,6 @@
 [package]
 name = "pointpca2"
-version = "0.4.0"
+version = "0.4.2"
 edition = "2021"
 
 [lib]
@@ -13,7 +13,7 @@ numpy = "0.15"
 
 [dependencies.pointpca2-rs]
 git = "https://github.com/akaTsunemori/pointpca2-rs.git"
-tag = "v1.4.0"
+tag = "v1.4.2"
 
 [dependencies.pyo3]
 version = "0.15.1"

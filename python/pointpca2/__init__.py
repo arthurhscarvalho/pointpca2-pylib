@@ -3,9 +3,9 @@ from .pointpca2 import compute_pointpca2 as __pointpca2_internal
 
 
 def __preprocess_point_cloud(points, colors):
-    if type(points) != np.ndarray:
+    if type(points) is np.ndarray:
         points = np.array(points, dtype=np.double)
-    if type(colors) != np.ndarray:
+    if type(colors) is np.ndarray:
         colors = np.array(colors, dtype=np.double)
     if points.shape != colors.shape:
         raise Exception("Points and colors must have the same shape.")
