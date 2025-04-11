@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "pointpca2"
-version = "0.1.0"
+version = "0.4.5"
 description = "A Rust-based Python library for extracting pointpca2 features from Point Clouds."
 readme = "README.md"
 requires-python = ">=3.10"
