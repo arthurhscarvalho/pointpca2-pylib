@@ -7,5 +7,5 @@ dependencies:
   - pip:
       - numpy==1.26.1
       - open3d==0.17.0
-      - maturin==1.5.1
+      - maturin==1.8.3
       - patchelf==0.17.2.1
