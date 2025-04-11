@@ -83,7 +83,7 @@ jobs:
           path: dist
 
       - name: Install Twine
-        run: pip install twine
+        run: pip install twine packaging>=24.2
 
       - name: Publish distribution to PyPI
         env:
