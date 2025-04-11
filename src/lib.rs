@@ -14,7 +14,7 @@ use utils::build_thread_pool;
 
 #[pyfunction]
 fn compute_pointpca2<'py>(
-    _py: Python<'py>,
+    py: Python<'py>,
     points_a: PyReadonlyArray2<'py, f64>,
     colors_a: PyReadonlyArray2<'py, u8>,
     points_b: PyReadonlyArray2<'py, f64>,
@@ -22,7 +22,7 @@ fn compute_pointpca2<'py>(
     search_size: usize,
     max_workers: usize,
     verbose: bool,
-) -> &'py PyArray1<f64> {
+) -> Bound<'py, PyArray1<f64>> {
     let points_a = as_dmatrix(points_a);
     let colors_a = as_dmatrix(colors_a);
     let points_b = as_dmatrix(points_b);
@@ -38,12 +38,12 @@ fn compute_pointpca2<'py>(
             verbose,
         )
     });
-    let py_array = PyArray1::from_iter(_py, pooled_predictors.iter().cloned());
+    let py_array = PyArray1::from_iter(py, pooled_predictors.iter().cloned());
     py_array
 }
 
 #[pymodule]
-fn pointpca2(_py: Python, m: &PyModule) -> PyResult<()> {
+fn pointpca2(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(compute_pointpca2, m)?)?;
     Ok(())
 }
