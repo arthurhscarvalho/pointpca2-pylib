@@ -8,7 +8,9 @@ def __preprocess_point_cloud(
 ) -> tuple[np.ndarray, np.ndarray]:
     if points.shape != colors.shape:
         raise Exception("Points and colors must have the same shape.")
-    if colors.max() <= 1 and colors.min() >= 0 and colors.dtype is np.double:
+    is_normalized = colors.max() <= 1 and colors.min() >= 0
+    is_floating = np.issubdtype(colors.dtype, np.floating)
+    if is_normalized and is_floating:
         colors *= 255
     if points.dtype != np.double:
         points = points.astype(np.double)
