@@ -1,15 +1,18 @@
-use na::DMatrix;
-use numpy::{PyReadonlyArray2, PyUntypedArrayMethods};
+use numpy::PyReadonlyArray2;
 use rayon::ThreadPool;
 use rayon::ThreadPoolBuilder;
 
-pub fn as_dmatrix<T>(x: PyReadonlyArray2<T>) -> DMatrix<T>
+pub fn to_vec<T>(x: PyReadonlyArray2<T>) -> Vec<[T; 3]>
 where
-    T: numpy::Element + na::Scalar,
+    T: numpy::Element + Copy,
 {
-    let shape = x.shape();
-    let data: Vec<T> = x.as_array().iter().cloned().collect();
-    DMatrix::from_row_slice(shape[0], shape[1], &data)
+    let array = x.as_array();
+    let n = array.shape()[0];
+    let mut vec = Vec::with_capacity(n);
+    for row in array.rows() {
+        vec.push([row[0], row[1], row[2]]);
+    }
+    vec
 }
 
 pub fn build_thread_pool(max_workers: usize) -> ThreadPool {

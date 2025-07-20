@@ -9,8 +9,8 @@ use numpy::PyArray1;
 use numpy::PyReadonlyArray2;
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
-use utils::as_dmatrix;
 use utils::build_thread_pool;
+use utils::to_vec;
 
 #[pyfunction]
 fn compute_pointpca2<'py>(
@@ -23,10 +23,10 @@ fn compute_pointpca2<'py>(
     max_workers: usize,
     verbose: bool,
 ) -> Bound<'py, PyArray1<f64>> {
-    let points_a = as_dmatrix(points_a);
-    let colors_a = as_dmatrix(colors_a);
-    let points_b = as_dmatrix(points_b);
-    let colors_b = as_dmatrix(colors_b);
+    let points_a = to_vec(points_a);
+    let colors_a = to_vec(colors_a);
+    let points_b = to_vec(points_b);
+    let colors_b = to_vec(colors_b);
     let pool = build_thread_pool(max_workers);
     let pooled_predictors = pool.install(|| {
         pointpca2_rs::compute_pointpca2(
