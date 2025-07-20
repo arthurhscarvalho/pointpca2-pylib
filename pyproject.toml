@@ -4,18 +4,14 @@ build-backend = "maturin"
 
 [project]
 name = "pointpca2"
-version = "0.4.6"
+version = "0.5.0"
 description = "A Rust-based Python library for extracting pointpca2 features from Point Clouds."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.13"
 dependencies = ["numpy>=1.26", "toml>=0.10.0"]
-classifier = [
-    "Programming Language :: Python",
-    "Programming Language :: Rust",
-]
 
 [project.urls]
-repository = "https://github.com/akaTsunemori/pointpca2-pylib"
+repository = "https://github.com/arthurhscarvalho/pointpca2-pylib"
 
 [tool.maturin]
 python-source = "python"
