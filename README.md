@@ -14,7 +14,7 @@ The numerical implementation is maintained in [pointpca2-rs](https://github.com/
 
 - Python `>=3.10,<3.13`; Python 3.11 or 3.12 is recommended for use with the MAPPE workspace.
 - NumPy and the other runtime dependencies declared in [pyproject.toml](pyproject.toml).
-- For source builds: a current stable Rust toolchain, Cargo, a native linker/C compiler, Git, and Maturin.
+- For source builds: [uv](https://docs.astral.sh/uv/), a current stable Rust toolchain, Cargo, a native linker/C compiler, and Git. uv installs Maturin and the other development tools.
 
 ## Installation
 
@@ -26,21 +26,29 @@ In a Python 3.11 or 3.12 environment:
 python -m pip install pointpca2
 ```
 
-A compatible wheel does not require a local Rust toolchain. To build from source, use the checkout instructions below, including any required backend directories.
+A compatible wheel does not require a local Rust toolchain. To build from source, use the checkout instructions below.
 
 ### From source
 
 ```bash
 git clone https://github.com/arthurhscarvalho/pointpca2-pylib.git
 cd pointpca2-pylib
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install "maturin>=1.0,<2.0"
-python -m maturin develop --release
+uv sync --locked --python 3.12
 ```
 
-Cargo fetches `pointpca2-rs` from Git tag `v1.5.1`, as declared in [Cargo.toml](Cargo.toml). A sibling backend checkout is not required. The activation command above is for a POSIX shell. Re-run `python -m maturin develop --release` after changing the binding or its backend.
+uv creates `.venv/`, installs the project as an editable package through Maturin, and installs the development tools declared in [pyproject.toml](pyproject.toml). [uv.lock](uv.lock) records the resolved dependencies. No environment activation is needed when using `uv run`.
+
+Cargo fetches `pointpca2-rs` from Git tag `v1.5.1`, as declared in [Cargo.toml](Cargo.toml). A sibling backend checkout is not required. After changing the Rust binding or its backend dependency, rebuild the extension:
+
+```bash
+uv run --locked maturin develop --release
+```
+
+To build a release wheel:
+
+```bash
+uv run --locked maturin build --release --out dist
+```
 
 ## Usage
 
@@ -76,11 +84,11 @@ print(predictors.shape)  # (40,)
 
 The clouds may contain different numbers of points, but both require colors. The result is a one-dimensional `float64` NumPy array of shape `(40,)`. Normalized floating-point color arrays are scaled in place by the Python wrapper; pass copies if you need to preserve them.
 
-A complete PLY-loading example and sample clouds are included in [examples/example_compute_predictors.py](examples/example_compute_predictors.py). After installing the optional reader dependency, run it from the repository root:
+A complete PLY-loading example and sample clouds are included in [examples/example_compute_predictors.py](examples/example_compute_predictors.py). From the repository root, install the example dependencies and run:
 
 ```bash
-python -m pip install open3d
-python examples/example_compute_predictors.py
+uv sync --locked --python 3.12 --group examples
+uv run --locked --group examples python examples/example_compute_predictors.py
 ```
 
 ## Publications

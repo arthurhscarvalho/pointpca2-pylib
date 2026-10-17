@@ -16,3 +16,8 @@ Cargo.lock
 # Related to the lib
 __pycache__
 *.so
+
+# Local Python environments and build artifacts
+.venv/
+dist/
+*.whl
